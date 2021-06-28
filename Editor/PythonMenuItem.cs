@@ -21,7 +21,7 @@ using UnityEditor;
 using UnityEngine;
 using System.IO;
 
-namespace Voxell.Python
+namespace Voxell.PythonVX
 {
   public static class CustomMenuItem
   {
@@ -29,7 +29,6 @@ namespace Voxell.Python
     public static void CreatePlainTextFile()
     {
       string copyPath = Resources.Load<PythonAsset>("python_script").filePath;
-      string copyContent = File.ReadAllText(copyPath);
       string projectWindowPath = AssetDatabase.GetAssetPath(Selection.activeObject);
       string targetPath = $"{projectWindowPath}/python_script.py";
 

@@ -18,11 +18,19 @@ All rights reserved.
 */
 
 using UnityEngine;
+using UnityEditor.AssetImporters;
 
 namespace Voxell.PythonVX
 {
-  public class PythonAsset : ScriptableObject
+  [ScriptedImporter(1, "py")]
+  public class PythonImporter : ScriptedImporter
   {
-    public string filePath;
+    public override void OnImportAsset(AssetImportContext ctx)
+    {
+      PythonAsset pythonAsset = ScriptableObject.CreateInstance<PythonAsset>();
+      pythonAsset.filePath = ctx.assetPath;
+      ctx.AddObjectToAsset("pythonAsset", pythonAsset, Resources.Load<Texture2D>("PythonLogo"));
+      ctx.SetMainObject(pythonAsset);
+    }
   }
 }
